@@ -3,10 +3,7 @@
 ---
 title: Garfield Fun – Server Side Template Injection (SSTI) Exploitation
 description: Garfield Fun SSTI walkthrough
-**CTF:** USC CTF  
-**Challenge:** garfield-fun  
-**Points:** 100 
-categories: [Web]
+categories: [Web][USC CTF]
 tags: [ssti, flask, jinja2]
 toc: true
 media_subpath: /assets/img/_posts/garfield-ssti
@@ -16,6 +13,8 @@ media_subpath: /assets/img/_posts/garfield-ssti
  what is server side template injection? can you use it to get garfields secret?
  
  garfield-fun.challenge.uscctf.org 
+ **Challenge:** garfield-fun  
+ **Points:** 100 
  
  Downloads: app.py
 
@@ -93,10 +92,10 @@ media_subpath: /assets/img/_posts/garfield-ssti
  ![Garfield Fun](Garfield_00.png)
  ![Garfield Fun1](Garfield_01.png)
   ```bash
-Payload:/mylabs?word_5={{7*7}}
+  Payload:/mylabs?word_5={{7*7}}
   ```
  ![SSTI_Confirmed](Garfield_1.png)
-   ```bash 
+   ```bash
    Output: Observe the 49 in the image above.
   ```
   This confirms that SSTI exists.
