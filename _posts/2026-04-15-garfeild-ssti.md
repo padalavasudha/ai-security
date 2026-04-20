@@ -5,7 +5,7 @@ categories: [Web, USC CTF]
 tags: [ssti, flask, jinja2]
 toc: true
 media_subpath: /assets/img/posts/garfield-ssti/
-
+---
 
 ### Description:
  what is server side template injection? can you use it to get garfields secret?
@@ -88,7 +88,9 @@ media_subpath: /assets/img/posts/garfield-ssti/
 
 ### Confirming SSTI
  [The challenege website](https://garfield-fun.challenge.uscctf.org)
+ 
  ![Garfield Fun](Garfield_00.png)
+ 
  ![Garfield Fun1](Garfield_01.png)
   
     Payload:
