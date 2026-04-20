@@ -92,18 +92,21 @@ media_subpath: /assets/img/_posts/garfield-ssti
  [The challenege website](https://garfield-fun.challenge.uscctf.org)
  ![Garfield Fun](Garfield_00.png)
  ![Garfield Fun1](Garfield_01.png)
-
+  ```bash
     Payload:/mylabs?word_5={{7*7}}
     
  ![SSTI_Confirmed](Garfield_1.png)
- 
-    Output: Observe the 49 in the image above.
+   ```bash
+     Output: Observe the 49 in the image above.
+    ```
     This confirms that SSTI exists.
 
  ---
 ### Exploring the Environment
+  ```bash
     Payload:/mylabs?word_5={{config}}
-    
+    ```
+ 
  ![Config output](Garfield_2.png)
  
     This showed the Flask config object, but SECRET_KEY was None, so it was not useful.
