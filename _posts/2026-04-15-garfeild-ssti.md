@@ -1,6 +1,5 @@
 ### Garfield Fun – Server Side Template Injection (SSTI) Exploitation
- 
---
+---
 title: Garfield Fun – Server Side Template Injection (SSTI) Exploitation
 description: Garfield Fun SSTI walkthrough
 categories: [Web][USC CTF]
