@@ -83,7 +83,7 @@
  ### Confirming SSTI
  [The challenege website](https://garfield-fun.challenge.uscctf.org)
  ![Garfield Fun](../assets/Garfield_00.png)
- ![Garfield Fun](../assets/Garfield_01.png)
+ ![Garfield Fun1](../assets/Garfield_01.png)
 
     Payload:/mylabs?word_5={{7*7}}
  ![SSTI_Confirmed](../assets/Garfield_1.png)
