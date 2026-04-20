@@ -136,6 +136,7 @@ media_subpath: /assets/img/posts/garfield-ssti/
 
 ### Flag
     {% raw %}uscctf{ssti_rules_mwahaha}{% endraw %}
+ 
  ---
 
 ### Why SSTI is Dangerous
