@@ -98,12 +98,12 @@ media_subpath: /assets/img/posts/garfield-ssti/
  ![SSTI_Confirmed](Garfield_1.png)
    
      Output:{% raw %}Observe the 49 in the image above.{% endraw %}
+  
   This confirms that SSTI exists.
 
  ---
 ### Exploring the Environment
     Payload:{% raw %}/mylabs?word_5={{config}}{% endraw %}
- 
  
  ![Config output](Garfield_2.png)
  
