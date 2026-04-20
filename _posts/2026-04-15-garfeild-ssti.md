@@ -94,6 +94,7 @@ media_subpath: /assets/img/posts/garfield-ssti/
  ![Garfield Fun1](Garfield_01.png)
   
     Payload:{% raw %}/mylabs?word_5={{7*7}}{% endraw %}
+
  ![SSTI_Confirmed](Garfield_1.png)
    
      Output:{% raw %}Observe the 49 in the image above.{% endraw %}
