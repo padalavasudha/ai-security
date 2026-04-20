@@ -1,11 +1,10 @@
-### Garfield Fun – Server Side Template Injection (SSTI) Exploitation
 ---
 title: Garfield Fun – Server Side Template Injection (SSTI) Exploitation
 description: Garfield Fun SSTI walkthrough
-categories: [Web][USC CTF]
+categories: [Web, USC CTF]
 tags: [ssti, flask, jinja2]
 toc: true
-media_subpath: /assets/img/_posts/garfield-ssti
+media_subpath: /assets/img/posts/garfield-ssti
 ---
 
 ### Description:
