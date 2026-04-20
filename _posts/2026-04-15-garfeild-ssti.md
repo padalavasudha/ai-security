@@ -11,7 +11,7 @@
  
  Downloads: app.py
 
-### Below is the simplified version of SSTI
+### SSTI
   
     Server-Side Template Injection (SSTI) is a vulnerability that happens when a website takes user input and directly uses it inside a template without treating it as plain text. 
     
@@ -82,11 +82,11 @@
 
 ### Confirming SSTI
  [The challenege website](https://garfield-fun.challenge.uscctf.org)
- ![Garfield Fun](../assets/Garfield_00.png)
- ![Garfield Fun1](../assets/Garfield_01.png)
+ ![Garfield Fun](/assets/Garfield_00.png)
+ ![Garfield Fun1](/assets/Garfield_01.png)
 
     Payload:/mylabs?word_5={{7*7}}
- ![SSTI_Confirmed](../assets/Garfield_1.png)
+ ![SSTI_Confirmed](/assets/Garfield_1.png)
  
     Output: Observe the 49 in the image above.
     This confirms that SSTI exists.
