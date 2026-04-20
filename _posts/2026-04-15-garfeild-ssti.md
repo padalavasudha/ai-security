@@ -21,16 +21,16 @@ media_subpath: /assets/img/_posts/garfield-ssti
 
 ### SSTI
   
-    Server-Side Template Injection (SSTI) is a vulnerability that happens when a website takes user input and directly uses it inside a template without treating it as plain text. 
-    
-    Templates are used by web applications to generate HTML pages. 
-    Some common template engines are Jinja2 (Python/Flask), Twig (PHP),etc. 
-    These engines can evaluate expressions written inside special syntax like {{ ... }}.
-    
-    If user input is inserted into the template and then rendered, the server may execute that input as code instead of displaying it.
-    for example: {{ 7*7 }} is added to the url, Instead of showing "{{7*7}}" as text, the server evaluates it and returns: 49
-    
-    This confirms that the input is being executed on the server, which means Server Side Template Injection exists.
+  Server-Side Template Injection (SSTI) is a vulnerability that happens when a website takes user input and directly uses it inside a template without treating it as plain text. 
+  
+  Templates are used by web applications to generate HTML pages. 
+  Some common template engines are Jinja2 (Python/Flask), Twig (PHP),etc. 
+  These engines can evaluate expressions written inside special syntax like {{ ... }}.
+  
+  If user input is inserted into the template and then rendered, the server may execute that input as code instead of displaying it.
+  for example: {{ 7*7 }} is added to the url, Instead of showing "{{7*7}}" as text, the server evaluates it and returns: 49
+  
+  This confirms that the input is being executed on the server, which means Server Side Template Injection exists.
 
 ### Initial Approach
 
@@ -93,13 +93,13 @@ media_subpath: /assets/img/_posts/garfield-ssti
  ![Garfield Fun](Garfield_00.png)
  ![Garfield Fun1](Garfield_01.png)
   ```bash
-    Payload:/mylabs?word_5={{7*7}}
+Payload:/mylabs?word_5={{7*7}}
   ```
  ![SSTI_Confirmed](Garfield_1.png)
-   ```bash
-     Output: Observe the 49 in the image above.
-   ```
-    This confirms that SSTI exists.
+   ```bash 
+   Output: Observe the 49 in the image above.
+  ```
+  This confirms that SSTI exists.
 
  ---
 ### Exploring the Environment
@@ -109,7 +109,7 @@ media_subpath: /assets/img/_posts/garfield-ssti
  
  ![Config output](Garfield_2.png)
  
-    This showed the Flask config object, but SECRET_KEY was None, so it was not useful.
+  This showed the Flask config object, but SECRET_KEY was None, so it was not useful.
 
  ---
 
@@ -127,7 +127,7 @@ media_subpath: /assets/img/_posts/garfield-ssti
   ```
  ![find output](Garfield_4.png)
 
-    This revealed the presence of flag.txt.
+  This revealed the presence of flag.txt.
 
  ---
 
