@@ -1,8 +1,16 @@
 ### Garfield Fun – Server Side Template Injection (SSTI) Exploitation
- **CTF:** USC CTF  
- **Challenge:** garfield-fun  
- **Category:** Web  
- **Points:** 100 
+ 
+---
+title: Garfield Fun – Server Side Template Injection (SSTI) Exploitation
+description: Garfield Fun SSTI walkthrough
+**CTF:** USC CTF  
+**Challenge:** garfield-fun  
+**Points:** 100 
+categories: [Web]
+tags: [ssti, flask, jinja2]
+toc: true
+media_subpath: /assets/img/_posts/garfield-ssti
+---
 
 ### Description:
  what is server side template injection? can you use it to get garfields secret?
