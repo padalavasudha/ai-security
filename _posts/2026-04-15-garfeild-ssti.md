@@ -106,10 +106,7 @@ media_subpath: /assets/img/posts/garfield-ssti/
 
  ---
 ### Exploring the Environment
-    Payload:
-     {% raw %}
-       /mylabs?word_5={{config}}
-      {% endraw %}
+    Payload:{% raw %}/mylabs?word_5={{config}}{% endraw %}
  
  ![Config output](Garfield_2.png)
  
